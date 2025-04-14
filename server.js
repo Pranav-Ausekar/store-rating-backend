@@ -14,12 +14,21 @@ import storeOwnerRoutes from './routes/storeOwnerRoutes.js';
 const app = express();
 
 app.use(express.json())
+// for local machine development
+// app.use(cors({
+//     origin: 'http://localhost:5173', // Allow frontend URL
+//     methods: ['GET', 'POST', 'PUT', 'DELETE'],
+//     allowedHeaders: ['Content-Type', 'Authorization'], // Allow Authorization header
+//     credentials: true // Allow cookies and credentials
+// }))
+
+// online development
 app.use(cors({
-    origin: 'http://localhost:5173', // Allow frontend URL
+    origin: 'https://store-rating-frontend-xi.vercel.app',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization'], // Allow Authorization header
-    credentials: true // Allow cookies and credentials
-}))
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true
+}));
 
 const PORT = process.env.PORT || 5000;
 // app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
